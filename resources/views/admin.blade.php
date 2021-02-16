@@ -47,10 +47,8 @@
                               <table class="table table-hover display" id="" width="100%" cellspacing="0">
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
-                                          <th>ID</th>
-                                          <th>Nom Client</th>
-                                          <th>Prenom Client</th>
-                                          <th>Adresse</th>
+                                          <th>Nom admin</th>
+                                          <th>Prenom admin</th>
                                           <th>Email</th>
                                           <th>Telephone</th>
                                           <th>Modifier</th>
@@ -58,7 +56,20 @@
                                       </tr>
                                   </thead>
                                   <tbody>
-                             
+                                   {{-- @foreach ($admins as $item)
+                                       {
+                                         <table>
+                                           <tr>
+                                             <td>{{$admin->nom_admin}}</td>
+                                             <td>{{$admin->prenom_admin}}</td>
+                                             <td>{{$admin->email_admin}}</td>
+                                             <td>{{$admin->telephone_admin}}</td>
+                                             {{-- <td>{{$admin->}}</td>
+                                             <td>{{$admin->}}</td> --}}
+                                           {{-- </tr>
+                                         </table>
+                                       } --}}
+                                   {{-- @endforeach --}} 
                                   </tbody>
                               </table>
                           </div>

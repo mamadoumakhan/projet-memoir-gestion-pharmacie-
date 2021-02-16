@@ -1,4 +1,4 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 @include('dashboard/head')
@@ -39,7 +39,7 @@
                   <div class="card shadow mb-4 border-left-success border-bottom-success">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                          <h6 class="m-0 font-weight-bold text-success">Jewelry</h6>
+                          <h6 class="m-0 font-weight-bold text-success">Produit</h6>
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">

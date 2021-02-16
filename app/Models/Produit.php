@@ -12,8 +12,6 @@ class Produit extends Model
     public static $rules = array('id_categorie'=>'required|integer',
                                  'id_lot'=>'required|integer',
                                  'nom_produit'=>'required|min:4',
-                                 'prix_session'=>'required|integer',
-                                 'prix_public'=>'required|integer',
                                  'date_peremption'=>'required|min:3',
                                // 'tva'=>'required|decimal',
                                 //'code_barre'=>'required|min:8',
