@@ -16,4 +16,5 @@ class Compte extends Model
   {
       return $this->belongsTo(related,'App\Utilisateur');
   }
+  protected $primaryKey = 'id_compte';
 }

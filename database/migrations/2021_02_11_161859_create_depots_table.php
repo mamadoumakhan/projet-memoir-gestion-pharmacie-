@@ -29,6 +29,7 @@ class CreateDepotsTable extends Migration
             ->onDelete('cascade')
             ->onUpdate('cascade');
         $table->dateTime('date_depot');
+        $table->softDeletes();
         $table->timestamps();
         });
     }

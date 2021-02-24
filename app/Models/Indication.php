@@ -14,4 +14,5 @@ class Indication extends Model
             {
                 return $this->belongsToMany(Produit::class);
             }
+            protected $primaryKey = 'id_indication';
 }

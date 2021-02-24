@@ -16,4 +16,5 @@ class Facture extends Model
             {
                 return $this->hasMany(related,'\App\LigneDeFacture');
             }
+            protected $primaryKey = 'id_facture';
 }

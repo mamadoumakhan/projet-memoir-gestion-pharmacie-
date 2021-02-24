@@ -85,7 +85,7 @@
                 </button>
             </div>
                        <div class="modal-body">
-                    <form role="form" method="POST" action="index.php/Client/enregistrer">
+                    <form role="form" method="POST" action="{{('client')}}">
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group col-md-8">

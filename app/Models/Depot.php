@@ -13,4 +13,5 @@ class Depot extends Model
                                  'id_client'=>'required|integer',
                                  'date_depot'=>'required|integer'
                                 );
+    protected $primaryKey = 'id_depot';
 }

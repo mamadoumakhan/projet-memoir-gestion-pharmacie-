@@ -21,6 +21,7 @@ class CreateLotsTable extends Migration
             ->onUpdate('restrict');
             $table->string('nom_lot');
             $table->string('quantite_lot');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

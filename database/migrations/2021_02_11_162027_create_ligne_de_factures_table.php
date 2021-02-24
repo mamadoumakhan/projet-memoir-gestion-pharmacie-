@@ -19,8 +19,8 @@ class CreateLigneDeFacturesTable extends Migration
             $table->foreign('id_produit')->id('id_produit')->references('id_produit')->on('produits')
             ->onDelete('restrict')
             ->onUpdate('restrict');
-            $table->unsignedBigInteger('id_agent');
-            $table->foreign('id_agent')->id('id_agent')->references('id_agent')->on('agents')
+            $table->unsignedBigInteger('id_utilisateur');
+            $table->foreign('id_utilisateur')->id('id_utilisateur')->references('id_utilisateur')->on('agents')
             ->onDelete('restrict')
             ->onUpdate('restrict');
             $table->unsignedBigInteger('id_facture');
@@ -28,6 +28,7 @@ class CreateLigneDeFacturesTable extends Migration
             ->onDelete('restrict')
             ->onUpdate('restrict');
             $table->integer('quantite');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

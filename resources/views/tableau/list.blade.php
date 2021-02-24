@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+@include('dashboard/head')
+
+<body id="page-top" class=" bg-gray-800">
+  <!--a revoir -->
+  {{-- @if (session()->has('sms'))
+  <div class="notification is-success">
+  
+      {{ session('sms') }}
+ </div>
+  @endif --}}
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    @include('dashboard/sidebar')
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        @include('dashboard/navbar')
+        @include('tableau/add')
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
+            {{-- <a href="{{route('form_tableau')}}"> --}}
+              <button type="button" class="btn btn-success btn-icon-text btn-md" data-toggle="modal" data-target="#add-tableau">
+                  <i class="fas fa-plus"></i> Ajout tableau
+              </button>
+            {{-- </a> --}}
+          </div>
+         
+         
+          <!-- Content Row -->
+
+            <div class="row">
+                
+                <div class="col-xl-12 col-lg-12">
+                  <div class="card shadow mb-4 border-left-success border-bottom-success">
+                      <!-- Card Header - Dropdown -->
+                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                          <h6 class="m-0 font-weight-bold text-success">tableau</h6>
+                      </div>
+                      <!-- Card Body -->
+                      <div class="card-body">
+                          <div class="table-responsive">
+                              <table class="table table-hover display" id="" width="100%" cellspacing="0">
+                                  <thead>
+                                      <tr style="font-size:13px;font-family:sans-serif;">
+                                          <th>nom</th>
+                                          <th>description</th> 
+                                          <th>modifier</th>
+                                          <th>supprimer</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    @foreach ($tableaus as $tableau)
+                                    <tr style="font-size:13px;font-family:sans-serif;">
+                                      <td>{{$tableau->nom_tableau}}</td>
+                                      <td>{{$tableau->description_tableau}}</td>
+                                      {{-- <td><a href="{{route('edittableau',['id_tableau'=>$tableau->id_tableau])}}">editer</a></td>
+                                      <td><a href="{{route('deletetableau',['id_tableau'=>$tableau->id_tableau])}}" onclick="return confirm('voullez vous supprimer');">supprimer</a></td> --}}
+                                      
+                                      <td>
+                                      <a href="{{route('edittableau',['id_tableau'=>$tableau->id_tableau])}}" data-toggle="tooltip" title="Edit">
+                                        <button type="button" class="btn btn-success btn-icon-text btn-flat btn-sm"data-toggle="modal"data-target="#edit-tableau" style="font-size:13px;">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+                                      </a>
+                                      </td>
+                                      <td>
+                                      <a href="{{route('deletetableau',['id_tableau'=>$tableau->id_tableau])}}" onclick="return confirm('voullez vous supprimer');" data-toggle="tooltip" title="Edit">
+                                      <button type="button" class="btn btn-danger btn-icon-text btn-flat btn-sm" style="font-size:13px;">
+                                          <i class="fas fa-cut"></i>
+                                      </button>
+                                      </a>
+                                      </td>
+                                      
+                                        {{-- formulaire d'edution --}}
+                                        <div class="modal fade" id="edit-tableau">
+                                          <div class="modal-dialog ">
+                                              <div class="modal-content">
+                                                  <div class="modal-header">
+                                                      <h4 class="modal-title">edit tableau</h4>
+                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                          <span aria-hidden="true">&times;</span>
+                                                      </button>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                      @if(isset($confirmation))
+                                                          @if($confirmation==1)
+                                                               <div class="alert alert-success">tableau ajouter avec success</div>
+                                                         
+                                                          @else
+                                                               <div class="alert alert-danger">tableau non ajouter</div>
+                                                          @endif
+                                                       @endif
+                                                          <form role="form" method="POST"  action="{{route('updatetableau')}}">
+                                                          <div class="card-body">
+                                                              <div class="row">
+                                                                  <div class="form-group col-md-12">
+                                                                      <label for="Name">Name</label>
+                                                                      <input type="text" value="{{$tableau->nom_tableau}}" name="nom_tableau" class="form-control" id="Name" placeholder="Name" required>
+                                                                  </div>
+                                                                 
+                                                                  <div class="form-group col-md-12">
+                                                                      <label for="Description">Description</label>
+                                                                      <textarea type="text"  value="{{$tableau->description_tableau}}" name="description_tableau" class="form-control" id="Description" placeholder="Description" required></textarea>
+                                                                  </div>
+                                                                 
+                                                                  {{-- <div class="form-group col-md-12">
+                                                                      <label for="Category">Category</label>
+                                                                      <select class="form-control">
+                                                                          <option>Category 1</option>
+                                                                          <option>Category 2</option>
+                                                                      </select>
+                                                                  </div> --}}
+                                                              </div >
+                                                              <button type="submit" class="btn btn-success">Save</button>
+                                                              <button type="button"  href="{{route('getAlltableau')}}" class="btn btn-default" data-dismiss="modal">Cancel</button> 
+                                                          </div>
+                                                          <!-- /.card-body -->
+                                                          
+                                                      </form>
+                                                    </div>
+                                                  </div>
+                                                  <!-- /.modal-content -->
+                                          </div>
+                                          <!-- /.modal-dialog -->
+                                      </div>
+                                        {{-- fin formulaire d'edution --}}
+                                      
+                                    @endforeach
+                                    
+                                    </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+            
+              </div>    
+                
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+         
+      @include('dashboard/modals')
+          @include('dashboard/footer')
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+        
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="../login/login.php">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  @include('dashboard/scripts')
+<script>
+    $(document).ready(function() {
+    $('table.display').DataTable();
+} );
+    </script>
+</body>
+
+</html>

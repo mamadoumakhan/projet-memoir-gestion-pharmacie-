@@ -13,14 +13,16 @@ class CreateComptesTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('comptes', function (Blueprint $table) {
-            $table->increments('id_compte');
-            $table->unsignedBigInteger('id_utilisateur');
-            $table->foreign('id_utilisateur')->id('id_utilisateur')->references('id_utilisateur')->on('utilisateurs')
+            $table->id('id_utilisateur');
+         //   $table->unsignedBigInteger('id_utilisateur');
+            $table->foreign('id_utilisateur')->references('id_utilisateur')->on('utilisateurs')
             ->onDelete('restrict')
             ->onUpdate('restrict');
             $table->text('role_compte');
             $table->dateTime('date_creation_compte');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

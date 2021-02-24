@@ -17,4 +17,5 @@ class Utilisateur extends Model
   {
       return $this->hasMany(related,'App\Compte');
   }
+  protected $primaryKey = 'id_utilisateur';
 }

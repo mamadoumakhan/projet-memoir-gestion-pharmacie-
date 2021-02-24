@@ -16,4 +16,5 @@ public function lot()
 {
     return $this->hasMany(related,'App\Lot');
 }
+protected $primaryKey = 'id_fournisseur';
 }

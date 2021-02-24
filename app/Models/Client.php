@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
 {
-    protected $fillable = array('id_utilisateur','nom_client', 'prenom_client', 'email_client', 'telephone_client','cni_client', 'adresse_client','montant_bon_client');
-    public static $rules = array('id_utilisateur'=>'required|integer',
+    protected $fillable = array('nom_client', 'prenom_client', 'email_client', 'telephone_client','cni_client', 'adresse_client','montant_bon_client');
+    public static $rules = array(
                                  'nom_client'=>'required|min:2',
                                  'prenom_client'=>'required|min:3',
                                  'email_client'=>'required|min:10',
@@ -25,4 +25,5 @@ class Client extends Model
       {
         return $this->belongsToMany(Agent::class);
       }
+      protected $primaryKey = 'id_client';
 }

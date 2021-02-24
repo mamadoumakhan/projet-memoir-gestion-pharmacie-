@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tableau extends Model
 {
-    protected $fillable = array('id_stock','nom_tableau','description_tableau');
-    public static $rules = array('id_stock'=>'required|integer',
+    protected $fillable = array('nom_tableau','description_tableau');
+    public static $rules = array(///'id_stock'=>'required|integer',
                                  'nom_tableau'=>'required|min:4',
                                  'description_tableau'=>'required|min:4'
                                 );
@@ -20,4 +20,5 @@ class Tableau extends Model
         {
             return $this->hasMany(related,'App\Categorie');
         }
+        protected $primaryKey = 'id_tableau';
 }

@@ -13,17 +13,15 @@ class CreateAgentsTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('agents', function (Blueprint $table) {
-            $table->increments('id_agent');
-            $table->unsignedBigInteger('id_utilisateur');
-            $table->foreign('id_utilisateur')->id('id_utilisateur')->references('id_utilisateur')->on('utilisateurs')
+            $table->id('id_utilisateur');
+            //$table->unsignedBigInteger('id_utilisateur');
+            $table->foreign('id_utilisateur')->references('id_utilisateur')->on('utilisateurs')
             ->onDelete('restrict')
             ->onUpdate('restrict');
-            $table->string('nom');
-            $table->string('prenom');
-            $table->string('email');
-            $table->string('telephone');
-            $table->string('etat');
+            $table->enum('etat',['suspendu','maintenu'])->defaul('maintenu');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

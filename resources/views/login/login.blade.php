@@ -20,7 +20,7 @@
                 <div class="p-5">
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Bienvenue dans votre application</h1>
-                    <h7 class="h7 text-gray-900 mb-4">Entrer votre login et mot de passe</h7>
+                    <h1 class="h7 text-gray-900 mb-4">Entrer votre login et mot de passe</h1>
                   </div>
                   <form class="user">
                   <?= form_open_multipart(base_url() . 'index.php/Welcome/dashboard', array('method' => 'POST')) ?>

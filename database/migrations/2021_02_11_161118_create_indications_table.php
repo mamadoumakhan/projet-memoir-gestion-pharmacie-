@@ -14,7 +14,8 @@ class CreateIndicationsTable extends Migration
     public function up()
     {
         Schema::create('indications', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_indication');
+            $table->string('nom_indication');
             $table->timestamps();
         });
     }

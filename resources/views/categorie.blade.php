@@ -46,15 +46,114 @@
                           <div class="table-responsive">
                               <table class="table table-hover display" id="" width="100%" cellspacing="0">
                                   <thead>
-                                      <tr style="font-size:13px;font-family:sans-serif;">
-                                          <th>ID</th>
+                                      <tr style="font-size:13px;font-family:sans-serif;">  
                                           <th>Nom Categorie</th>
                                           <th>Modifier</th>
                                           <th>Supprimer</th>
                                       </tr>
                                   </thead>
                                   <tbody>
-                                    
+                                 
+                                      @foreach ($categories as $categorie)
+                                          <tr style="font-size:13px;font-family:sans-serif;">
+                                            <td>{{$categorie->nom_categorie}}</td>
+                                            {{-- <td>
+                                              <a href="{{route('editcategorie',['id_categorie'=>$categorie->id_categorie])}}">Editer</a>
+                                            </td> --}}
+                                           
+                                             {{-- <th> --}}
+                                               <td>
+                                               <a href="{{route('editcategorie',['id_categorie'=>$categorie->id_categorie])}}" data-toggle="modal" data-target="#edit-category{{$categorie->id_categorie}}"
+                                                class="btn btn-success btn-icon-text btn-flat btn-sm" data-toggle="tooltip" title="Edit"> 
+                                                    <i class="fas fa-pen"></i>
+                                                </a>  
+                                              </td>
+                                              {{-- formulaire et bouton pour la methode d'essaie --}}
+                                              {{-- <td>
+                                                  <form action="{{action('CategorieController@delete', $categorie->id_categorie)}}" method="post">
+                                                  {{csrf_field()}}
+                                                  
+                                                  <button class="btn btn-danger btn-xs" type="submit"></button>
+                                              </td> --}}
+
+                                              {{-- <td>
+                                                <p>
+                                                  <a href="{{ URL::action('CategorieController@edit', $Categorie->id) }}" class="button">Editer</a>
+                                                  {{ Form::model(
+                                                           $categorie, [ 
+                                                              'url' => URL::action('CategorieController@delete', $categorie ),
+                                                              'method' => 'DELETE'
+                                                           ]
+                                                     )
+                                                  }}
+                                                  {{ Form::submit('Delete', ['class' => 'button']) }}
+                                                  {{ Form::close() }}
+                                               </p>
+                                              </td> --}}
+                                              {{-- <td>
+                                              <form action="{{url('testeur'.'/delete')}}" method="POST">
+                                                 @csrf
+                                                {{ method_field('DELETE') }}
+                                                <button type="button" class="btn btn-danger btn-icon-text btn-flat btn-sm" style="font-size:13px;">
+                                                  <i class="fas fa-cut"></i>
+                                              </button>
+                                              </form>
+                                              </td> --}}
+                                                  {{-- la methode delete de ngor --}}
+
+                                                 
+                                                  {{-- <td><a href="{{route('deletecategorie',['id_categorie'=>$categorie->id_categorie])}}">supprimer</a></td> --}}
+
+                                                  {{-- <td><a href="{{route('deletecategorie',['id_categorie'=>$categorie->id_categorie])}}" onclick="return confirm('voullez vous supprimer');">supprimer</a></td> --}}
+                                                   {{--fin de la methode delete de ngor --}}
+
+                                              <td>
+                                                <a href="{{route('deletecategorie',['id_categorie'=>$categorie->id_categorie])}} " onclick="return confirm('voullez vous vraiment supprimer');" data-toggle="tooltip" title="Edit">
+                                                <button type="button" class="btn btn-danger btn-icon-text btn-flat btn-sm" style="font-size:13px;">
+                                                    <i class="fas fa-cut"></i>
+                                                </button>
+                                                </a>
+                                                </td>
+                                                <div class="modal fade" id="edit-category{{$categorie->id_categorie}}">
+                                                  <div class="modal-dialog ">
+                                                      <div class="modal-content">
+                                                          <div class="modal-header">
+                                                              <h4 class="modal-title">Modifier Categorie</h4>
+                                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                  <span aria-hidden="true">&times;</span>
+                                                              </button>
+                                                          </div>
+                                                                     <div class="modal-body">
+                                                                  <form role="form" method="POST" action="{{route('updatecategorie',[$categorie->id_categorie])}}">
+                                                                    @csrf
+                                                                    {{--  action="{{route('edit_categorie'->{{$categorie->id_categorie}})}}" --}}
+                                                                  <div class="card-body">
+                                                                      <div class="row">
+                                                                          <div class="form-group col-md-12">
+                                                                              <label for="Name">Name</label>
+                                                                              <input type="text" class="form-control" id="Name" value="{{$categorie->nom_categorie}}" name="nom_categorie" placeholder="Name" required>
+                                                                          </div>
+                                                                      </div >
+                                                                      <button type="submit" class="btn btn-success">Save</button>
+                                                                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> 
+                                                                  </div>
+                                                                  <!-- /.card-body -->
+                                                                  
+                                                              </form>
+                                                            </div>
+                                                          </div>
+                                                          <!-- /.modal-content -->
+                                                  </div>
+                                                  <!-- /.modal-dialog -->
+                                              </div>
+              
+                                            </tr>
+                                              {{-- </th>
+                                               --}}
+                                      @endforeach
+
+
+                                      
                                   </tbody>
                               </table>
                           </div>
@@ -72,7 +171,8 @@
       
       <!-- Footer -->
       <!-- /.modal edit-jewelry -->
-<div class="modal fade" id="add-category">
+
+ {{-- <div class="modal fade" id="add-category">
     <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
@@ -82,30 +182,66 @@
                 </button>
             </div>
                        <div class="modal-body">
-                    <form role="form" method="POST" action="index.php/Categorie/enregistrer">
+                    <form role="form" method="POST" action="{{route('')}}">
                     <!--?= form_open_multipart(base_url() . 'index.php/Categorie/enregistrer', array('method' => 'POST')) ?-->
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label for="Name">Nom Categorie</label>
-                                <input type="text" class="form-control" id="nom_categorie" name="nom_categorie" placeholder="Name" required>
+                                <input type="text" class="form-control" id="nom_categorie" name="nom_categorie" placeholder="nom categorie" required>
                             </div>
                         </div >
                         <button type="submit" class="btn btn-success">Save</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> 
                     </div>
                     <!-- /.card-body -->
-                    
+                    @csrf()
                 </form>
               </div>
             </div>
             <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
-</div>
+    <div class="modal fade" id="edit-category">
+      <div class="modal-dialog ">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title">Modifier Categorie</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+                         <div class="modal-body">
+                      <form role="form"> 
+                      <div class="card-body">
+                          <div class="row">
+                              <div class="form-group col-md-12">
+                                  <label for="Name">Name</label>
+                                  <input type="text" class="form-control" id="Name" placeholder="Name" required>
+                              </div>
+                          </div >
+                           @method('PUT')
+                          @csrf() 
+                          <button type="submit" class="btn btn-success">Save</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> 
+                      </div>
+                      <!-- /.card-body -->
+                      
+                  </form>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+  </div>
+</div> --}}
 <!-- /.modal add-category -->
+ 
+
+
 
 <!-- /.modal edit-category -->
+        @include('dashboard/modals')
         @include('dashboard/footer')
       <!-- End of Footer -->
 

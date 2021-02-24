@@ -7,15 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Agent extends Model
 {
-    protected $fillable = array('id_utilisateur','nom_agent', 'prenom_agent', 'email_agent', 'telephone_agent','etat_agent');
-    public static $rules = array('id_utilisateur'=>'required|integer',
-                                 'nom_agent'=>'required|min:2',
-                                 'prenom_agent'=>'required|min:3',
-                                 'email_agent'=>'required|min:10',
-                                 'telephone_agent'=>'required|min:9',
-                                 'etat_agent'=>'required|min:1',
+    protected $fillable = array('nom', 'prenom', 'email', 'telephone','etat');
+    public static $rules = array(
+                                 'nom'=>'required|min:2',
+                                 'prenom'=>'required|min:3',
+                                 'email'=>'required|min:10',
+                                 'telephone'=>'required|min:9',
+                                 'etat'=>'required|min:1',
 );
-    public function produit_agent()
+    public function produit()
         {
             return $this->belongsToMany(Produit::class);
         }
@@ -23,4 +23,7 @@ class Agent extends Model
         {
             return $this->belongsToMany(Client::class);
         }
+        protected $primaryKey = 'id_agent';
 }
+
+

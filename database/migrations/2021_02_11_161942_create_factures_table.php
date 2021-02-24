@@ -15,12 +15,13 @@ class CreateFacturesTable extends Migration
     {
         Schema::create('factures', function (Blueprint $table) {
             $table->increments('id_facture');
-            $table->unsignedBigInteger('id_client');
-            $table->foreign('id_client')->id('id_client')->references('id_client')->on('clients')
+            $table->unsignedBigInteger('id_utilisateur');
+            $table->foreign('id_utilisateur')->id('id_utilisateur')->references('id_utilisateur')->on('clients')
             ->onDelete('restrict')
             ->onUpdate('restrict');
             $table->string('type_paiement');
-            $table->string('date_acture');
+            $table->string('date_facture');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

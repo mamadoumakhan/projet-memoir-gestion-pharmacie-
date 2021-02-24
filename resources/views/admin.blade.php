@@ -56,9 +56,8 @@
                                       </tr>
                                   </thead>
                                   <tbody>
-                                   {{-- @foreach ($admins as $item)
-                                       {
-                                         <table>
+                                   @foreach ($admins as $admin)
+                                       
                                            <tr>
                                              <td>{{$admin->nom_admin}}</td>
                                              <td>{{$admin->prenom_admin}}</td>
@@ -66,10 +65,22 @@
                                              <td>{{$admin->telephone_admin}}</td>
                                              {{-- <td>{{$admin->}}</td>
                                              <td>{{$admin->}}</td> --}}
-                                           {{-- </tr>
-                                         </table>
-                                       } --}}
-                                   {{-- @endforeach --}} 
+                                            </tr>
+                                            <td>
+                                              <a href="{{route('editadmin',['id_admin'=>$admin->id_admin])}}"  data-toggle="modal" data-toggle="modal" data-target="#edit-category{{$admin->id_admin}}"
+                                               class="btn btn-success btn-icon-text btn-flat btn-sm" data-toggle="tooltip" title="Edit"> 
+                                                   <i class="fas fa-pen"></i>
+                                               </a>  
+                                             </td>
+                                             <td>
+                                              <a href="{{route('deleteadmin',['id_admin'=>$admin->id_admin])}} " onclick="return confirm('voullez vous vraiment supprimer');" data-toggle="tooltip" title="Edit">
+                                              <button type="button" class="btn btn-danger btn-icon-text btn-flat btn-sm" style="font-size:13px;">
+                                                  <i class="fas fa-cut"></i>
+                                              </button>
+                                              </a>
+                                              </td> -
+                                       
+                                    @endforeach 
                                   </tbody>
                               </table>
                           </div>
@@ -86,7 +97,7 @@
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <div class="modal fade" id="add-customer">
+      {{-- <div class="modal fade" id="add-customer">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -96,7 +107,7 @@
                 </button>
             </div>
                        <div class="modal-body">
-                    <form role="form" method="POST" action="index.php/Client/enregistrer">
+                    <form role="form" method="POST" action="">
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group col-md-8">
@@ -127,11 +138,11 @@
                     
                 </form>
               </div>
-            </div>
+            </div> --}}
             <!-- /.modal-content -->
-    </div>
+    {{-- </div>
     <!-- /.modal-dialog -->
-</div>
+</div> --}}
 
 <!-- /.modal add-customer -->
 <div class="modal fade" id="edit-client">>

@@ -13,17 +13,16 @@ class CreateAdminsTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('admins', function (Blueprint $table) {
-            $table->increments('id_admin');
-            $table->unsignedBigInteger('id_utilisateur');
-            $table->foreign('id_utilisateur')->id('id_utilisateur')->references('id_utilisateur')->on('utilisateurs')
+            $table->id('id_utilisateur');
+          //  $table->unsignedBigInteger('id_utilisateur');
+            $table->foreign('id_utilisateur')->references('id_utilisateur')->on('utilisateurs')
             ->onDelete('restrict')
             ->onUpdate('restrict');
-            $table->string('nom_admin');
-            $table->string('prenom_admin');
-            $table->string('email_admin');
-            $table->string('telephone_admin');
+            $table->softDeletes();
             $table->timestamps();
+            
         });
     }
 

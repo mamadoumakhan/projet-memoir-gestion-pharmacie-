@@ -17,4 +17,5 @@ class LigneDeFacture extends Model
            {
                return $this->belongsTo(related,'\App\Facture');
            }
+           protected $primaryKey = 'id_ligne_de_facture';
 }

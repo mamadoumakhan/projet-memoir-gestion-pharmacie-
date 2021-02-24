@@ -18,4 +18,5 @@ class Notice extends Model
                                  'interdiction_medicamenteuse'=>'required|min:4',
                                  'grossesse'=>'required|min:4',
                                  'allaitement'=>'required|min:4');
+    protected $primaryKey = 'id_notice';
 }
