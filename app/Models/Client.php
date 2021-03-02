@@ -7,14 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
 {
-    protected $fillable = array('nom_client', 'prenom_client', 'email_client', 'telephone_client','cni_client', 'adresse_client','montant_bon_client');
+    protected $fillable = array('id_utilisateur','montant_bon_client');
     public static $rules = array(
-                                 'nom_client'=>'required|min:2',
-                                 'prenom_client'=>'required|min:3',
-                                 'email_client'=>'required|min:10',
-                                 'telephone_client'=>'required|min:9',
-                                 'cni_client'=>'required|min:13',
-                                 'adresse_client'=>'required|min:2',
+                                'id_utilisateur'=>'required|integer',
                                  'montant_bon_client'=>'decimal',
 );
     public function facture()
@@ -25,5 +20,7 @@ class Client extends Model
       {
         return $this->belongsToMany(Agent::class);
       }
-      protected $primaryKey = 'id_client';
+      public $incrementing = false;
+        protected $primaryKey = 'id_utilisateur';
+     
 }

@@ -15,15 +15,15 @@ class CreateNoticesTable extends Migration
     {
         Schema::create('notices', function (Blueprint $table) {
             $table->increments('id_notice');
-            $table->decimal('prix_session');
-            $table->decimal('prix_public');
-            $table->string('tva');
-            $table->string('code_barre');
-            $table->text('posologie');
-            $table->text('effet_indesirable');
-            $table->text('interdiction_medicamenteuse');
-            $table->text('grossesse');
-            $table->text('allaitement');
+            // $table->decimal('prix_session');
+            // $table->decimal('prix_public');
+            // $table->string('tva');
+            // $table->string('code_barre');
+            // $table->text('posologie');
+            // $table->text('effet_indesirable');
+            // $table->text('interdiction_medicamenteuse');
+            // $table->text('grossesse');
+            // $table->text('allaitement');
             $table->timestamps();
         });
     }

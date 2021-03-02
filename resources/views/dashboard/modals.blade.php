@@ -313,7 +313,7 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-<!-- /.modal add-sales -->
+<!-- /.modal add-sales --> 
 <div class="modal fade" id="edit-sales">
     <div class="modal-dialog ">
         <div class="modal-content">

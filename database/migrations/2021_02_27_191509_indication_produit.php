@@ -12,7 +12,8 @@ class IndicationProduit extends Migration
      * @return void
      */
     public function up()
-    { 
+    {
+        Schema::disableForeignKeyConstraints();
         Schema::create('indication_produit', function (Blueprint $table) {
         $table->bigIncrements('id_indication_produit');
         $table->unsignedBigInteger('id_indication');

@@ -21,10 +21,23 @@ class AgentController extends Controller
     }
     public function index()
     {
-        $agent = DB::table('agents');
-        join('utilisateurs','utilisateur.id_utilisateur','=','agent.id_utilisateur')
-        ->get();
-        return view('agent')->with('agents',$agents);
+        $utilisateurs = Utilisateur::All();
+        $agents = DB::table('agents')
+        ->join('utilisateurs', 'agents.id_utilisateur', '=', 'utilisateurs.id_utilisateur');
+        return view('agent')->with('utilisateurs', $utilisateurs)->with('agents', $agents);
+
+
+        // $agent = DB::table('agents');
+        // join('utilisateurs','utilisateur.id_utilisateur','=','agent.id_utilisateur')
+        // ->get();
+        // var_dump($agent);
+        // return view('agent')->with('agents',$agents);
+
+        // teste autre methode
+
+        //  ->select('agents.nom_produit', 'Cathegories.nom_categorie','Tableaus.nom_tableau','agents.date_peremption','agents.quantite');
+        // return $query->join('agents', function($join){$join->on('utilisateur.id_utilisateur', '=', 'agent.id_utilisateur'); });
+        // 
     }
     public function delete($id)
     {

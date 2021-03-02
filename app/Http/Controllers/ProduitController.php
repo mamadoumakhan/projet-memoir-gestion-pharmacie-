@@ -5,15 +5,18 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Produit;
 use App\Models\Categorie;
+use App\Models\Indication;
+use App\Models\Indication_produit;
+use App\Models\Tableau;
 class ProduitController extends Controller
 {
-    public function listeproduit()
-    {
-        $categories = Categorie::All();
-        $produits = Produit::All();
-        return view('/produit')->with('produits', $produits)->with('categories', $categories);   
+    // public function listeproduit()
+    // {
+    //     $categories = Categorie::All();
+    //     $produits = Produit::All();
+    //     return view('/produit')->with('produits', $produits)->with('categories', $categories);   
 
-    }
+    // }
     // public function store(Request $request)
     // {
     //     Produit::create($request->All());
@@ -43,11 +46,19 @@ class ProduitController extends Controller
     public function getAll()
     {
         // $produit = Produit::paginate(5);
+        // $indication_produits = Indication_produit::All();
+        // $indications = Indication::All();
+        $tableaus = Tableau::All();
         $categories = Categorie::All();
         $produits = DB::table('produits')
-        ->join('Cathegories', 'Produits.id_categorie', '=', 'Cathegories.id_categorie');
-      
-        return view('/produit')->with('produits', $produits)->with('categories', $categories);
+        ->join('categories', 'Produits.id_categorie', '=', 'categories.id_categorie')
+        ->join('tableaus', 'Produits.id_tableau', '=', 'tableaus.id_tableau')
+        // ->join('indication_produits','indication_produit.id_indication_produit', '=', 'indication_produit.id_indication','and',
+                // 'indication_produits','indication_produit.id_indication_produit', '=', 'indication_produit.id_produit'
+        // )
+        ->get();
+     
+       return view('/produit')->with('produits', $produits)->with('categories', $categories)->with('tableaus', $tableaus);
     }
     public function edit($id)
     {

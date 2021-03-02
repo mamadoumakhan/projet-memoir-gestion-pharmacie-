@@ -20,6 +20,11 @@
           <i class="fa fa-fw fa-tachometer-alt"></i>
           <span>Produit</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('/article')}}">  
+          <i class="fa fa-fw fa-tachometer-alt"></i>
+          <span>Article</span></a>
+      </li>
     <li class="nav-item">
         <a class="nav-link" href="{{url('/categorie')}}">
           <i class="fa fa-copy"></i>
@@ -30,24 +35,24 @@
           <i class="fa fa-fw fa-tachometer-alt"></i>
           <span>Tableau</span></a>
       </li>
-    {{-- <li class="nav-item">
+     <li class="nav-item">
         <a class="nav-link" href="{{url('/vente')}}">
         <!-- ventes=sales -->
           <i class="fa fa-fw fa-align-right"></i>
           <span>Ventes</span></a>
       </li>
-    <li class="nav-item">
+  {{--  <li class="nav-item">
         <a class="nav-link" href="{{url('/client')}}">
         <!-- client=custumer -->
           <i class="fa fa-fw fa-users"></i>
           <span>Clients</span></a>
       </li>--}}
       <li class="nav-item">
-        <a class="nav-link" href="{{url('/agent')}}">
+        <a class="nav-link" href="{{url('/utilisateur')}}">
         <!-- utilisateur=users -->
         <i class="fas fa-stethoscope"></i>
           {{-- <i class="fa fa-fw fa-user"></i> --}}
-          <span>Agent</span></a>
+          <span>utilisateur</span></a>
       </li> 
       <li class="nav-item">
         <a class="nav-link" href="{{url('/fournisseur')}}">
@@ -62,25 +67,45 @@
           <i class="fa fa-fw fa-user"></i>
           <span>Admin</span></a>
       </li> --}}
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link" href="{{url('/stock')}}">
         <!-- utilisateur=users -->
           <i class="fa fa-fw fa-user"></i>
           <span>Stock</span></a>
-      </li>
+      </li> --}}
       <li class="nav-item">
         <a class="nav-link" href="{{url('/indication')}}">
         <!-- utilisateur=users -->
           <i class="fa fa-fw fa-user"></i>
           <span>Indication</span></a>
       </li>
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link" href="{{url('/notice')}}">
         <!-- utilisateur=users -->
           <i class="fa fa-fw fa-user"></i>
           <span>Notice</span></a>
+      </li> --}}
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('/statistique')}}">
+        <!-- utilisateur=users -->
+          <i class="fa fa-fw fa-user"></i>
+          <span>Gestion Statistique</span></a>
+          <ul class="">
+            <li class="nav-item">
+              <a class="nav-link" href="{{url('/tva')}}">
+              <!-- utilisateur=users -->
+                <i class="fa fa-fw fa-user"></i>
+                <span>Gestion Bilan</span></a>
+            </li>
+          </ul>
       </li>
-
+      
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('/tva')}}">
+        <!-- utilisateur=users -->
+          <i class="fa fa-fw fa-user"></i>
+          <span>Gestion TVA</span></a>
+      </li>
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class IndicationProduit extends Model
+class Indication_produit extends Model
 {
     protected $fillable = array('id_indication','id_produit');
     public static $rules = array('id_indication'=>'required|integer',
@@ -13,4 +13,4 @@ class IndicationProduit extends Model
                 
                                 );
                                 protected $primaryKey = 'id_indication_produit';
-                            }
+}

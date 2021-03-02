@@ -18,6 +18,8 @@ use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\TableauController;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\VenteController;
+use App\Http\Controllers\ArticleController;
 
 
 
@@ -31,6 +33,12 @@ use App\Models\Agent;
 use App\Models\Client;
 use App\Models\Produit;
 use App\Models\Categorie;
+use App\Models\Compte;
+use App\Models\Utilisateur;
+use App\Models\LigneDeFacture;
+use App\Models\Indication_produit;
+use App\Models\Article;
+
 
 
 use App\Http\Controllers\TestsController;
@@ -56,9 +64,9 @@ Route::get('/', function () {
 // Route::get('/users', function () {
 //     return view('users');
 // });
-Route::get('/vente', function () {
-    return view('vente');
-});
+// Route::get('/vente', function () {
+//     return view('vente');
+// });
 // Route::get('/categorie', function () {
 //     return view('categorie');
 // });
@@ -135,7 +143,7 @@ Route::get('/produit/edit/{id_produit}', [ProduitController::class, 'edit'])->na
 Route::post('/produit/{produit}', [ProduitController::class, 'update'])->name('updateproduit');
 Route::get('/produit/delete/{id_produit}', [ProduitController::class, 'delete'])->name('deleteproduit');
 Route::get('/produit', [ProduitController::class, 'getAll'])->name('getAllproduit');
-Route::get('/produit', [ProduitController::class, 'listeproduit'])->name('afficher_produit');
+//Route::get('/produit', [ProduitController::class, 'listeproduit'])->name('afficher_produit');
 Route::post('produit', [ProduitController::class, 'store'])->name('creer_produit');
 //persiste permet d'inserer dans la base  de donnee
 
@@ -169,9 +177,24 @@ Route::post('/admin/{admin}', [AdminController::class, 'update'])->name('admin.u
 Route::get('/admin/{admin}', [AdminController::class, 'destroy'])->name('admin.destroy');
 
 
+//les routes pour les ventes
+
+Route::get('/vente/edit/{id_vente}', [LigneDeFactureController::class, 'edit'])->name('editvente');
+Route::post('/vente/{vente}', [LigneDeFactureController::class, 'update'])->name('updatevente');
+Route::get('/vente/delete/{id_vente}', [LigneDeFactureController::class, 'delete'])->name('deletevente');
+Route::get('/vente', [LigneDeFactureController::class, 'getAll'])->name('getAllvente');
+//Route::get('/vente', [LigneDeFactureController::class, 'listevente'])->name('afficher_vente');
+Route::post('vente', [LigneDeFactureController::class, 'store'])->name('creer_vente');
+Route::get('/vente/inserer/{id_produit}', [LigneDeFactureController::class, 'inserer'])->name('inserervente');
 
 
+// les routes pour les articles
 
+Route::post('article', [ArticleController::class, 'store'])->name('creer_article');
+Route::post('article/{article}', [ArticleController::class, 'update'])->name('updatearticle');
+Route::get('article/edit/{id_article}', [ArticleController::class, 'edit'])->name('editarticle');
+Route::get('/article/delete/{id_article}', [ArticleController::class, 'delete'])->name('deletearticle');
+Route::get('/article', [ArticleController::class, 'getAll'])->name('getAllarticle');
 
 
 

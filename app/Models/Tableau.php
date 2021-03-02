@@ -12,13 +12,13 @@ class Tableau extends Model
                                  'nom_tableau'=>'required|min:4',
                                  'description_tableau'=>'required|min:4'
                                 );
-    public function tableau()
-        {
-            return $this->belongsTo(related,'App\Stock');
-        }
-    public function categorie()
-        {
-            return $this->hasMany(related,'App\Categorie');
-        }
+    // public function tableau()
+    //     {
+    //         return $this->belongsTo(related,'App\Stock');
+    //     }
+    // public function categorie()
+    //     {
+    //         return $this->hasMany(related,'App\Categorie');
+    //     }
         protected $primaryKey = 'id_tableau';
 }

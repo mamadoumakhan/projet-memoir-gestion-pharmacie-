@@ -21,7 +21,7 @@ class CreateClientsTable extends Migration
             ->onDelete('restrict')
             ->onUpdate('restrict');
 
-            $table->string('cni_client');
+            // $table->string('cni_client');
 
             $table->decimal('montant_bon_client');
             $table->softDeletes();

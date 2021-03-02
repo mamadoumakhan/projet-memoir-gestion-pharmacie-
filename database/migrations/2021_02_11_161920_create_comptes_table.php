@@ -21,6 +21,7 @@ class CreateComptesTable extends Migration
             ->onDelete('restrict')
             ->onUpdate('restrict');
             $table->text('role_compte');
+            $table->text('passe_compte');
             $table->dateTime('date_creation_compte');
             $table->softDeletes();
             $table->timestamps();

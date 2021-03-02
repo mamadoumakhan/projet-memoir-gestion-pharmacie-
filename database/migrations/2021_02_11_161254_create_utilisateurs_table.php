@@ -20,6 +20,9 @@ class CreateUtilisateursTable extends Migration
            $table->string('email_utilisateur');
            $table->string('telephone_utilisateur');
            $table->string('adresse_utilisateur');
+           $table->string('cni_utilisateur');
+           $table->string('login');
+           $table->string('password');
            $table->timestamps();
             $table->softDeletes();
         });

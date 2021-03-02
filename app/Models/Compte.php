@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Compte extends Model
 {
-    protected $fillable = array('id_utilisateur', 'role_compte', 'date_creation_compte');
+    protected $fillable = array('id_utilisateur', 'role_compte', 'date_creation_compte','passe_compte');
     public static $rules = array('id_utilisateur'=>'required|integer',
                                   'role_compte'=>'required|min:4',
                                   'date_creation_compte'=>'required|min:3',
@@ -16,5 +16,6 @@ class Compte extends Model
   {
       return $this->belongsTo(related,'App\Utilisateur');
   }
-  protected $primaryKey = 'id_compte';
+  // protected $primaryKey = 'id_compte';
+  protected $primaryKey = 'id_utilisateur';
 }
